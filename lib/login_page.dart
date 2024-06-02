@@ -1,3 +1,4 @@
+import 'package:final_project/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -14,10 +15,15 @@ class _LoginPageState extends State<LoginPage> {
     if (_passwordController.text == _correctPassword) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-            content: Text(
-          'Login successful!',
-          style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
-        )),
+          content: Text(
+            'Login successful!',
+            style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
+          ),
+        ),
+      );
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
