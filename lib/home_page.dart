@@ -11,7 +11,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final TextEditingController _controller = TextEditingController();
   String? _translatedWord;
-  String? _imagePath;
 
   void _translateWord() async {
     final englishWord = _controller.text.trim();
@@ -20,10 +19,8 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         if (result != null) {
           _translatedWord = result['turkish'];
-          _imagePath = result['image'];
         } else {
           _translatedWord = 'Translation not found';
-          _imagePath = null;
         }
       });
     }
@@ -69,16 +66,6 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   SizedBox(height: 20),
-                  if (_imagePath != null)
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(12.0),
-                      child: Image.asset(
-                        _imagePath!,
-                        width: 200,
-                        height: 200,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
                 ],
               ),
           ],

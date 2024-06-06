@@ -13,7 +13,6 @@ class DbHelper {
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 english TEXT,
                 turkish TEXT,
-                image TEXT
               )''',
         );
         await _insertInitialData(db);
@@ -22,8 +21,7 @@ class DbHelper {
   }
 
   // Insert a new word into the database.
-  static Future<void> insertWord(
-      String english, String turkish, String image) async {
+  static Future<void> insertWord(String english, String turkish) async {
     final Database database = await db();
 
     await database.insert(
@@ -31,7 +29,6 @@ class DbHelper {
       {
         'english': english,
         'turkish': turkish,
-        'image': image,
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
@@ -42,22 +39,18 @@ class DbHelper {
     await db.insert('words', {
       'english': 'Hello',
       'turkish': 'Merhaba',
-      'image': 'lib/images/hello.jpeg',
     });
     await db.insert('words', {
       'english': 'Goodbye',
       'turkish': 'Güle güle',
-      'image': 'path_to_image_goodbye',
     });
     await db.insert('words', {
       'english': 'Please',
       'turkish': 'Lütfen',
-      'image': 'path_to_image_please',
     });
     await db.insert('words', {
       'english': 'Thank you',
       'turkish': 'Teşekkür ederim',
-      'image': 'path_to_image_thank_you',
     });
     // Add more initial data as needed
   }
@@ -92,7 +85,6 @@ class DbHelper {
     int id,
     String english,
     String turkish,
-    String image,
   ) async {
     final Database database = await db();
 
@@ -101,7 +93,6 @@ class DbHelper {
       {
         'english': english,
         'turkish': turkish,
-        'image': image,
       },
       where: 'id = ?',
       whereArgs: [id],
