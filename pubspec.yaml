@@ -66,6 +66,7 @@ flutter:
   assets:
     - lib/images/loginbk.jpeg
     - lib/images/icon1.jpeg
+    - lib/images/hello.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

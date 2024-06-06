@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:final_project/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -92,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                     filled: true,
                     fillColor: Colors.grey[200],
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30.0),
+                      borderRadius: BorderRadius.circular(50.0),
                     ),
                     labelText: 'Enter the Password',
                   ),

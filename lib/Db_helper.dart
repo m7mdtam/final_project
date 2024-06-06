@@ -42,7 +42,7 @@ class DbHelper {
     await db.insert('words', {
       'english': 'Hello',
       'turkish': 'Merhaba',
-      'image': 'path_to_image_hello',
+      'image': 'lib/images/hello.jpeg',
     });
     await db.insert('words', {
       'english': 'Goodbye',
@@ -76,5 +76,35 @@ class DbHelper {
     } else {
       return null;
     }
+  }
+
+  static Future<void> deleteWord(int id) async {
+    final Database database = await db();
+
+    await database.delete(
+      'words',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
+
+  static Future<void> updateWord(
+    int id,
+    String english,
+    String turkish,
+    String image,
+  ) async {
+    final Database database = await db();
+
+    await database.update(
+      'words',
+      {
+        'english': english,
+        'turkish': turkish,
+        'image': image,
+      },
+      where: 'id = ?',
+      whereArgs: [id],
+    );
   }
 }
