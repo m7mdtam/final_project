@@ -2,7 +2,6 @@
 
 import 'package:final_project/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -74,19 +73,17 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(height: 5),
                 Text(
                   'Welcome to Cyprus Dictionary',
-                  style: GoogleFonts.lobster(
-                    textStyle: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      shadows: [
-                        Shadow(
-                          blurRadius: 10.0,
-                          color: Colors.black54,
-                          offset: Offset(2.0, 2.0),
-                        ),
-                      ],
-                    ),
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    shadows: [
+                      Shadow(
+                        blurRadius: 10.0,
+                        color: Colors.black54,
+                        offset: Offset(5.0, 5.0),
+                      ),
+                    ],
                   ),
                 ),
                 SizedBox(height: 20),

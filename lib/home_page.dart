@@ -44,7 +44,17 @@ class _HomePageState extends State<HomePage> {
         title: Text(
           'Cyprus Dictionary',
           style: TextStyle(
-              fontSize: 23.0, fontWeight: FontWeight.bold, color: Colors.black),
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+            shadows: [
+              Shadow(
+                blurRadius: 10.0,
+                color: Colors.black54,
+                offset: Offset(4.0, 4.0),
+              ),
+            ],
+          ),
         ),
       ),
       drawer: Drawer(
