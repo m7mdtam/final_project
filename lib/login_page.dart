@@ -23,6 +23,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       );
+
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => HomePage()),
@@ -31,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
             content: Text(
-          'Invalid password , Try again !!',
+          'Invalid password, Try again!!',
           style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
         )),
       );
@@ -61,8 +62,6 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 ClipRRect(
                   borderRadius: BorderRadius.circular(30),
-
-                  // ignore: sized_box_for_whitespace
                   child: Container(
                       height: 120,
                       width: 120,
@@ -72,39 +71,73 @@ class _LoginPageState extends State<LoginPage> {
                             "lib/images/icon1.jpeg",
                           ))),
                 ),
-                SizedBox(
-                  height: 5,
-                ),
+                SizedBox(height: 5),
                 Text(
                   'Welcome to Cyprus Dictionary',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic,
+                  style: GoogleFonts.lobster(
+                    textStyle: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      shadows: [
+                        Shadow(
+                          blurRadius: 10.0,
+                          color: Colors.black54,
+                          offset: Offset(2.0, 2.0),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
+                SizedBox(height: 20),
                 TextField(
                   controller: _passwordController,
                   obscureText: true,
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: Colors.grey[200],
+                    fillColor: Colors.white,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide.none,
                     ),
-                    labelText: 'Enter the Password',
+                    hintText: 'Enter the Password',
+                    hintStyle: TextStyle(color: Colors.grey[600]),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      borderSide:
+                          BorderSide(color: Colors.blueAccent, width: 2.0),
+                    ),
+                    prefixIcon: Icon(Icons.lock, color: Colors.blue),
                   ),
+                  style: TextStyle(color: Colors.blue, fontSize: 20),
+                  cursorColor: Colors.blue,
                 ),
                 SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: _verifyPassword,
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Color.fromARGB(239, 48, 82, 141),
+                    shadowColor: Colors.black,
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                    textStyle: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   child: Text(
                     'Login',
-                    style: TextStyle(color: Colors.black, fontSize: 20),
+                    style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                 ),
               ],
