@@ -1,8 +1,10 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, library_private_types_in_public_api
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, library_private_types_in_public_api, prefer_const_declarations
 import 'package:final_project/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:final_project/Db_helper.dart';
 import 'package:flutter/services.dart';
+import 'history_page.dart';
+import 'favorite_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -13,6 +15,7 @@ class _HomePageState extends State<HomePage> {
   final TextEditingController _controller = TextEditingController();
   String? _translatedWord;
   int _currentIndex = 0;
+  bool _isFavorite = false;
 
   void _translateWord() async {
     final englishWord = _controller.text.trim();
@@ -21,11 +24,16 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         if (result != null) {
           _translatedWord = result['turkish'];
+          DbHelper.insertHistory(englishWord, _translatedWord!);
         } else {
           _translatedWord = 'Translation not found';
         }
       });
     }
+  }
+
+  void _addToFavorites(String english, String turkish) async {
+    await DbHelper.insertFavorite(english, _translatedWord!);
   }
 
   void _copyText(String text) {
@@ -35,10 +43,118 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void _showAddWordDialog() {
+    final TextEditingController englishController = TextEditingController();
+    final TextEditingController turkishController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+            side: BorderSide(
+              color: Color.fromARGB(239, 48, 82, 141),
+              width: 2,
+            ),
+          ),
+          title: Text(
+            'Add New Word',
+            style: TextStyle(
+              color: Color.fromARGB(239, 48, 82, 141),
+              fontWeight: FontWeight.bold,
+              shadows: [
+                Shadow(
+                  blurRadius: 5.0,
+                  color: Colors.grey,
+                  offset: Offset(3.0, 3.0),
+                ),
+              ],
+            ),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: englishController,
+                decoration: InputDecoration(
+                  labelText: 'English',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(
+                      color: Color.fromARGB(239, 48, 82, 141),
+                      width: 2,
+                    ),
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+              ),
+              SizedBox(height: 10),
+              TextField(
+                controller: turkishController,
+                decoration: InputDecoration(
+                  labelText: 'Turkish',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(
+                      color: Color.fromARGB(239, 48, 82, 141),
+                      width: 2,
+                    ),
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromARGB(239, 48, 82, 141),
+                shadowColor: Colors.black,
+                foregroundColor: Colors.white,
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              onPressed: () async {
+                final english = englishController.text.trim();
+                final turkish = turkishController.text.trim();
+                if (english.isNotEmpty && turkish.isNotEmpty) {
+                  await DbHelper.insertWord(english, turkish);
+                  Navigator.of(context).pop();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                        content: Text(
+                      'Word added successfully',
+                      style: TextStyle(color: Colors.green),
+                    )),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                        content: Text(
+                      'Both fields are required',
+                      style: TextStyle(color: Colors.red),
+                    )),
+                  );
+                }
+              },
+              child: Text('Add'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
         elevation: 0,
         backgroundColor: Color.fromARGB(239, 48, 82, 141),
         title: Text(
@@ -56,6 +172,16 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.add,
+              color: Colors.white,
+              size: 35,
+            ),
+            onPressed: _showAddWordDialog,
+          ),
+        ],
       ),
       drawer: Drawer(
         child: ListView(
@@ -76,8 +202,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       CircleAvatar(
                         radius: 30,
-                        backgroundImage: AssetImage(
-                            'lib/images/hello.jpeg'), // Change this path to your image path
+                        backgroundImage: AssetImage('lib/images/hello.jpeg'),
                       ),
                       SizedBox(width: 10),
                       Column(
@@ -278,17 +403,15 @@ class _HomePageState extends State<HomePage> {
                     foregroundColor: Colors.white,
                     backgroundColor:
                         Color.fromARGB(239, 48, 82, 141), // Text color
-                    shadowColor: Colors.white, // Shadow color
-                    elevation: 5, // Elevation
+                    shadowColor: Colors.white,
+                    elevation: 5,
                     shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(30.0), // Rounded corners
+                      borderRadius: BorderRadius.circular(30.0),
                     ),
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 30, vertical: 15), // Button padding
+                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                     textStyle: TextStyle(
-                      fontSize: 18, // Font size
-                      fontWeight: FontWeight.bold, // Font weight
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   child: Text('Translate'),
@@ -327,6 +450,37 @@ class _HomePageState extends State<HomePage> {
                             onPressed: () => _copyText(_translatedWord!),
                             tooltip: 'Copied',
                           ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.star,
+                              color: _isFavorite ? Colors.yellow : Colors.white,
+                            ),
+                            onPressed: () {
+                              final englishWord = _controller.text.trim();
+
+                              // Check if _translatedWord is not null before adding to favorites
+                              if (_translatedWord != null) {
+                                // Insert the word into the favorite table
+                                _addToFavorites(englishWord, _translatedWord!);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('Added to favorites'),
+                                  ),
+                                );
+                                setState(() {
+                                  _isFavorite = true;
+                                  // Update the state to indicate the word is added to favorites
+                                });
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('Translate a word first'),
+                                  ),
+                                );
+                              }
+                            },
+                            tooltip: 'Add to Favorites',
+                          ),
                         ],
                       ),
                     ),
@@ -347,6 +501,19 @@ class _HomePageState extends State<HomePage> {
         onTap: (index) {
           setState(() {
             _currentIndex = index;
+            if (index == 0) {
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => HomePage()),
+              );
+            } else if (index == 1) {
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => HistoryPage()),
+              );
+            } else if (index == 2) {
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => FavoritePage()),
+              );
+            }
           });
         },
         items: [
