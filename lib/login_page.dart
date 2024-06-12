@@ -36,6 +36,7 @@ class _LoginPageState extends State<LoginPage> {
         )),
       );
     }
+    _passwordController.clear();
   }
 
   @override
@@ -74,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
                 Text(
                   'Welcome to Cyprus Dictionary',
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                     shadows: [
@@ -122,7 +123,6 @@ class _LoginPageState extends State<LoginPage> {
                     foregroundColor: Colors.white,
                     backgroundColor: Color.fromARGB(239, 48, 82, 141),
                     shadowColor: Colors.black,
-                    elevation: 5,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50.0),
                     ),

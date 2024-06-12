@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'home_page.dart';
 import 'history_page.dart';
-import 'Db_helper.dart'; // Import your DbHelper class
+import 'Db_helper.dart';
 
 class FavoritePage extends StatefulWidget {
   @override
@@ -11,13 +11,13 @@ class FavoritePage extends StatefulWidget {
 }
 
 class _FavoritePageState extends State<FavoritePage> {
-  int _currentIndex = 2; // Set the default index to 2 for FavoritePage
-  List<Map<String, dynamic>> _favorites = []; // Add a list to store favorites
+  int _currentIndex = 2;
+  List<Map<String, dynamic>> _favorites = [];
 
   @override
   void initState() {
     super.initState();
-    _fetchFavorites(); // Fetch favorites when the page initializes
+    _fetchFavorites();
   }
 
   Future<void> _fetchFavorites() async {
@@ -29,7 +29,7 @@ class _FavoritePageState extends State<FavoritePage> {
 
   Future<void> _removeFromFavorites(int id) async {
     await DbHelper.deleteFavorite(id);
-    _fetchFavorites(); // Fetch favorites again after removing one
+    _fetchFavorites();
   }
 
   @override

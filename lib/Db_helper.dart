@@ -139,21 +139,4 @@ class DbHelper {
       whereArgs: [id],
     );
   }
-
-  static Future<void> updateWord(
-    int id,
-    String english,
-    String turkish,
-  ) async {
-    final Database database = await db();
-    await database.update(
-      'words',
-      {
-        'english': english,
-        'turkish': turkish,
-      },
-      where: 'id = ?',
-      whereArgs: [id],
-    );
-  }
 }

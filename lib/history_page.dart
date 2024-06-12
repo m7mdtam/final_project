@@ -88,7 +88,7 @@ class _HistoryPageState extends State<HistoryPage> {
                       ),
                     ),
                     trailing: IconButton(
-                      icon: Icon(Icons.delete, color: Colors.red),
+                      icon: Icon(Icons.cancel_rounded, color: Colors.red),
                       onPressed: () => _deleteHistory(item['id']),
                     ),
                   ),

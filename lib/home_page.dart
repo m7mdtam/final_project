@@ -29,6 +29,15 @@ class _HomePageState extends State<HomePage> {
           _translatedWord = 'Translation not found';
         }
       });
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Please enter the word',
+            style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+          ),
+        ),
+      );
     }
   }
 
@@ -39,7 +48,7 @@ class _HomePageState extends State<HomePage> {
   void _copyText(String text) {
     Clipboard.setData(ClipboardData(text: text));
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Text copied to clipboard')),
+      SnackBar(content: Text('Text copied')),
     );
   }
 
@@ -285,7 +294,7 @@ class _HomePageState extends State<HomePage> {
                                   fontSize: 17, fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              'Phone: 05338303401',
+                              'Phone: 05488666534',
                               style: TextStyle(
                                   fontSize: 17, fontWeight: FontWeight.bold),
                             ),
@@ -347,7 +356,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Container(
-            color: Colors.black.withOpacity(0.7),
+            color: Colors.black.withOpacity(0.6),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -377,10 +386,9 @@ class _HomePageState extends State<HomePage> {
                   controller: _controller,
                   decoration: InputDecoration(
                     hintText: 'Enter English word',
-                    hintStyle:
-                        TextStyle(color: Colors.blueGrey), // Hint text color
+                    hintStyle: TextStyle(color: Colors.blueGrey),
                     filled: true,
-                    fillColor: Colors.black,
+                    fillColor: Colors.white,
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.blue, width: 2.0),
                       borderRadius: BorderRadius.all(Radius.circular(12.0)),
@@ -393,8 +401,8 @@ class _HomePageState extends State<HomePage> {
                     prefixIcon: Icon(Icons.translate,
                         color: Colors.blue), // Prefix icon
                   ),
-                  style: TextStyle(color: Colors.blue, fontSize: 20),
-                  cursorColor: Colors.white,
+                  style: TextStyle(color: Colors.black, fontSize: 20),
+                  cursorColor: Colors.black,
                 ),
                 SizedBox(height: 10),
                 ElevatedButton(
@@ -458,9 +466,7 @@ class _HomePageState extends State<HomePage> {
                             onPressed: () {
                               final englishWord = _controller.text.trim();
 
-                              // Check if _translatedWord is not null before adding to favorites
                               if (_translatedWord != null) {
-                                // Insert the word into the favorite table
                                 _addToFavorites(englishWord, _translatedWord!);
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
@@ -469,7 +475,6 @@ class _HomePageState extends State<HomePage> {
                                 );
                                 setState(() {
                                   _isFavorite = true;
-                                  // Update the state to indicate the word is added to favorites
                                 });
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
