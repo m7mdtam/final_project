@@ -4,7 +4,7 @@ import 'package:sqflite/sqflite.dart';
 class DbHelper {
   static Future<Database> db() async {
     return openDatabase(
-      join(await getDatabasesPath(), 'translator1.db'),
+      join(await getDatabasesPath(), 'translator2.db'),
       version: 1,
       onCreate: (db, version) async {
         await db.execute(
