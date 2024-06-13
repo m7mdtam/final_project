@@ -4,7 +4,7 @@ import 'package:sqflite/sqflite.dart';
 class DbHelper {
   static Future<Database> db() async {
     return openDatabase(
-      join(await getDatabasesPath(), 'translator3.db'),
+      join(await getDatabasesPath(), 'translator4.db'),
       version: 1,
       onCreate: (db, version) async {
         await db.execute(
@@ -570,6 +570,463 @@ class DbHelper {
     await db.insert('words', {'english': 'Run', 'turkish': 'Koşmak'});
     await db
         .insert('words', {'english': 'Shop', 'turkish': 'Alışveriş yapmak'});
+    await db
+        .insert('words', {'english': 'Good morning', 'turkish': 'Günaydın'});
+    await db.insert(
+        'words', {'english': 'Good evening', 'turkish': 'İyi akşamlar'});
+    await db.insert('words', {
+      'english': 'Nice to meet you',
+      'turkish': 'Tanıştığımıza memnun oldum'
+    });
+    await db
+        .insert('words', {'english': 'How are you?', 'turkish': 'Nasılsınız?'});
+    await db.insert('words', {'english': 'I am fine', 'turkish': 'İyiyim'});
+    await db.insert('words',
+        {'english': 'Thank you very much', 'turkish': 'Çok teşekkür ederim'});
+    await db.insert(
+        'words', {'english': 'You are welcome', 'turkish': 'Rica ederim'});
+    await db
+        .insert('words', {'english': 'Excuse me', 'turkish': 'Affedersiniz'});
+    await db.insert('words', {'english': 'I am sorry', 'turkish': 'Üzgünüm'});
+    await db.insert(
+        'words', {'english': 'What is your name?', 'turkish': 'Adınız nedir?'});
+    await db.insert(
+        'words', {'english': 'My name is John', 'turkish': 'Benim adım John'});
+    await db.insert(
+        'words', {'english': 'Where are you from?', 'turkish': 'Nerelisiniz?'});
+    await db.insert('words',
+        {'english': 'I am from Turkey', 'turkish': 'Ben Türkiye\'liyim'});
+    await db.insert('words', {
+      'english': 'Nice to meet you',
+      'turkish': 'Tanıştığımıza memnun oldum'
+    });
+    await db
+        .insert('words', {'english': 'Good night', 'turkish': 'İyi geceler'});
+    await db
+        .insert('words', {'english': 'See you later', 'turkish': 'Görüşürüz'});
+    await db.insert('words', {'english': 'Goodbye', 'turkish': 'Hoşçakal'});
+    await db.insert(
+        'words', {'english': 'Have a nice day', 'turkish': 'İyi günler'});
+    await db.insert(
+        'words', {'english': 'What time is it?', 'turkish': 'Saat kaç?'});
+    await db.insert('words',
+        {'english': 'Where is the restroom?', 'turkish': 'Tuvalet nerede?'});
+    await db.insert('words', {
+      'english': 'Can you help me?',
+      'turkish': 'Bana yardım edebilir misiniz?'
+    });
+    await db.insert('words',
+        {'english': 'I need a doctor', 'turkish': 'Bir doktora ihtiyacım var'});
+    await db.insert(
+        'words', {'english': 'How much is this?', 'turkish': 'Bu ne kadar?'});
+    await db.insert('words', {
+      'english': 'I would like to buy this',
+      'turkish': 'Bunu satın almak istiyorum'
+    });
+    await db.insert('words', {
+      'english': 'Do you speak English?',
+      'turkish': 'İngilizce biliyor musunuz?'
+    });
+    await db.insert('words',
+        {'english': 'Please speak slowly', 'turkish': 'Lütfen yavaş konuşun'});
+    await db.insert(
+        'words', {'english': 'I don\'t understand', 'turkish': 'Anlamıyorum'});
+    await db
+        .insert('words', {'english': 'What is this?', 'turkish': 'Bu nedir?'});
+    await db.insert('words',
+        {'english': 'Where are we going?', 'turkish': 'Nereye gidiyoruz?'});
+    await db.insert('words', {'english': 'I am hungry', 'turkish': 'Açım'});
+    await db.insert('words', {'english': 'I am thirsty', 'turkish': 'Susadım'});
+    await db.insert('words', {'english': 'I am tired', 'turkish': 'Yorgunum'});
+    await db.insert('words', {'english': 'I am lost', 'turkish': 'Kayboldum'});
+    await db.insert('words',
+        {'english': 'I need a taxi', 'turkish': 'Bir taksiye ihtiyacım var'});
+    await db.insert('words', {
+      'english': 'Can you take me to this address?',
+      'turkish': 'Beni bu adrese götürebilir misiniz?'
+    });
+    await db.insert('words', {
+      'english': 'What do you recommend?',
+      'turkish': 'Ne tavsiye edersiniz?'
+    });
+    await db.insert('words', {
+      'english': 'Is there a pharmacy nearby?',
+      'turkish': 'Yakınlarda bir eczane var mı?'
+    });
+    await db.insert('words', {
+      'english': 'Where can I find a restaurant?',
+      'turkish': 'Nerede bir restoran bulabilirim?'
+    });
+    await db.insert('words',
+        {'english': 'I need a hotel', 'turkish': 'Bir otele ihtiyacım var'});
+    await db.insert('words', {
+      'english': 'Is there a hospital nearby?',
+      'turkish': 'Yakınlarda bir hastane var mı?'
+    });
+    await db.insert('words', {
+      'english': 'Can you show me on the map?',
+      'turkish': 'Haritada gösterebilir misiniz?'
+    });
+    await db.insert('words', {
+      'english': 'Where is the train station?',
+      'turkish': 'Tren istasyonu nerede?'
+    });
+    await db.insert('words', {
+      'english': 'Can I have the bill, please?',
+      'turkish': 'Hesabı alabilir miyim lütfen?'
+    });
+    await db.insert('words', {
+      'english': 'What time does it open?',
+      'turkish': 'Ne zaman açılıyor?'
+    });
+    await db.insert('words', {
+      'english': 'What time does it close?',
+      'turkish': 'Ne zaman kapanıyor?'
+    });
+    await db.insert('words',
+        {'english': 'I need help', 'turkish': 'Yardıma ihtiyacım var'});
+    await db.insert('words', {
+      'english': 'Can you give me directions?',
+      'turkish': 'Bana yol tarif edebilir misiniz?'
+    });
+    await db.insert('words',
+        {'english': 'What is the weather like?', 'turkish': 'Hava nasıl?'});
+    await db.insert('words', {
+      'english': 'Can I get a discount?',
+      'turkish': 'İndirim alabilir miyim?'
+    });
+    await db.insert('words', {
+      'english': 'Where can I buy tickets?',
+      'turkish': 'Biletleri nereden alabilirim?'
+    });
+    await db.insert(
+        'words', {'english': 'What is the price?', 'turkish': 'Fiyat nedir?'});
+    await db.insert('words',
+        {'english': 'Is it far from here?', 'turkish': 'Buradan uzak mı?'});
+    await db.insert('words', {
+      'english': 'Where can I exchange money?',
+      'turkish': 'Nerede para bozdurabilirim?'
+    });
+    await db.insert('words', {
+      'english': 'Is there a bank nearby?',
+      'turkish': 'Yakınlarda bir banka var mı?'
+    });
+    await db.insert('words', {
+      'english': 'Can I pay with credit card?',
+      'turkish': 'Kredi kartı ile ödeyebilir miyim?'
+    });
+    await db.insert('words',
+        {'english': 'Is it safe here?', 'turkish': 'Burası güvenli mi?'});
+    await db.insert('words', {
+      'english': 'I am allergic to peanuts',
+      'turkish': 'Yer fıstığına alerjim var'
+    });
+    await db.insert('words', {
+      'english': 'Can I have water, please?',
+      'turkish': 'Su alabilir miyim, lütfen?'
+    });
+    await db.insert('words', {
+      'english': 'Where is the nearest supermarket?',
+      'turkish': 'En yakın süpermarket nerede?'
+    });
+    await db.insert('words', {
+      'english': 'Do you have a menu in English?',
+      'turkish': 'İngilizce bir menünüz var mı?'
+    });
+    await db.insert('words', {
+      'english': 'What time is the next bus?',
+      'turkish': 'Bir sonraki otobüs saat kaçta?'
+    });
+    await db.insert('words', {
+      'english': 'Can I have a receipt?',
+      'turkish': 'Fatura alabilir miyim?'
+    });
+    await db.insert('words', {
+      'english': 'I need to go to the airport',
+      'turkish': 'Havaalanına gitmem gerekiyor'
+    });
+    await db.insert('words', {
+      'english': 'Can I have the wifi password?',
+      'turkish': 'WiFi şifresini alabilir miyim?'
+    });
+    await db.insert('words', {
+      'english': 'I am looking for a pharmacy',
+      'turkish': 'Bir eczane arıyorum'
+    });
+    await db.insert('words', {
+      'english': 'Where is the bus stop?',
+      'turkish': 'Otobüs durağı nerede?'
+    });
+    await db.insert('words', {
+      'english': 'Can you call a taxi for me?',
+      'turkish': 'Bana bir taksi çağırabilir misiniz?'
+    });
+    await db.insert('words', {
+      'english': 'Where can I buy a SIM card?',
+      'turkish': 'SIM kartı nereden alabilirim?'
+    });
+    await db.insert('words', {
+      'english': 'Can I use your phone?',
+      'turkish': 'Telefonunuzu kullanabilir miyim?'
+    });
+    await db.insert('words', {
+      'english': 'What time does the store open?',
+      'turkish': 'Mağaza saat kaçta açılıyor?'
+    });
+    await db.insert('words', {
+      'english': 'Can you give me a wake-up call?',
+      'turkish': 'Beni uyandırabilir misiniz?'
+    });
+    await db.insert('words', {
+      'english': 'Can I have an extra pillow?',
+      'turkish': 'Ekstra yastık alabilir miyim?'
+    });
+    await db.insert('words', {
+      'english': 'What time is breakfast?',
+      'turkish': 'Kahvaltı saat kaçta?'
+    });
+    await db.insert('words', {
+      'english': 'Where can I get a taxi?',
+      'turkish': 'Nerede taksi bulabilirim?'
+    });
+    await db.insert('words', {
+      'english': 'Can you recommend a good restaurant?',
+      'turkish': 'İyi bir restoran tavsiye edebilir misiniz?'
+    });
+    await db.insert('words', {
+      'english': 'I need to go to the train station',
+      'turkish': 'Tren istasyonuna gitmem gerekiyor'
+    });
+    await db.insert('words', {
+      'english': 'Can you help me find my hotel?',
+      'turkish': 'Otelimi bulmama yardım edebilir misiniz?'
+    });
+    await db.insert('words',
+        {'english': 'What time is the flight?', 'turkish': 'Uçuş saat kaçta?'});
+    await db.insert('words', {
+      'english': 'Can I get a ticket to Istanbul?',
+      'turkish': 'İstanbul\'a bir bilet alabilir miyim?'
+    });
+    await db.insert('words', {
+      'english': 'Where can I buy a bus ticket?',
+      'turkish': 'Otobüs bileti nereden alabilirim?'
+    });
+    await db.insert('words', {
+      'english': 'Can you recommend a good hotel?',
+      'turkish': 'İyi bir otel tavsiye edebilir misiniz?'
+    });
+    await db.insert('words', {
+      'english': 'I need to find a pharmacy',
+      'turkish': 'Bir eczane bulmam gerekiyor'
+    });
+    await db.insert('words', {
+      'english': 'Where can I find a taxi?',
+      'turkish': 'Nerede taksi bulabilirim?'
+    });
+    await db.insert('words', {
+      'english': 'What time does the train leave?',
+      'turkish': 'Tren saat kaçta kalkıyor?'
+    });
+    await db.insert('words', {
+      'english': 'Can I have another blanket?',
+      'turkish': 'Bir başka battaniye alabilir miyim?'
+    });
+    await db.insert('words', {
+      'english': 'I need to go to the embassy',
+      'turkish': 'Elçiliğe gitmem gerekiyor'
+    });
+    await db.insert('words', {
+      'english': 'Can you show me the way?',
+      'turkish': 'Bana yolu gösterebilir misiniz?'
+    });
+    await db.insert('words', {
+      'english': 'Where is the nearest ATM?',
+      'turkish': 'En yakın ATM nerede?'
+    });
+    await db.insert('words', {
+      'english': 'Can I use your charger?',
+      'turkish': 'Şarj cihazınızı kullanabilir miyim?'
+    });
+    await db.insert('words', {
+      'english': 'What is the wifi password?',
+      'turkish': 'WiFi şifresi nedir?'
+    });
+    await db.insert('words', {
+      'english': 'Can I have a map?',
+      'turkish': 'Bir harita alabilir miyim?'
+    });
+    await db.insert('words', {
+      'english': 'Where is the information desk?',
+      'turkish': 'Danışma nerede?'
+    });
+    await db.insert('words', {
+      'english': 'Can you recommend a good bar?',
+      'turkish': 'İyi bir bar tavsiye edebilir misiniz?'
+    });
+    await db.insert('words', {
+      'english': 'I need a map of the city',
+      'turkish': 'Şehrin bir haritasına ihtiyacım var'
+    });
+    await db.insert('words', {
+      'english': 'Can I have a city map?',
+      'turkish': 'Bir şehir haritası alabilir miyim?'
+    });
+    await db.insert('words', {
+      'english': 'What time is lunch?',
+      'turkish': 'Öğle yemeği saat kaçta?'
+    });
+    await db.insert('words', {
+      'english': 'Can you call a doctor?',
+      'turkish': 'Bir doktor çağırabilir misiniz?'
+    });
+    await db.insert('words', {
+      'english': 'Where can I find a doctor?',
+      'turkish': 'Nerede doktor bulabilirim?'
+    });
+    await db.insert('words', {
+      'english': 'Can I get a train ticket?',
+      'turkish': 'Tren bileti alabilir miyim?'
+    });
+    await db.insert('words', {
+      'english': 'What time is dinner?',
+      'turkish': 'Akşam yemeği saat kaçta?'
+    });
+    await db.insert('words', {
+      'english': 'Can you recommend a good coffee shop?',
+      'turkish': 'İyi bir kahve dükkanı tavsiye edebilir misiniz?'
+    });
+    await db.insert('words', {
+      'english': 'I need to go to the bus station',
+      'turkish': 'Otobüs terminaline gitmem gerekiyor'
+    });
+    await db.insert('words', {
+      'english': 'Where can I buy a map?',
+      'turkish': 'Haritayı nereden alabilirim?'
+    });
+    await db.insert('words',
+        {'english': 'What time is check-out?', 'turkish': 'Çıkış saat kaçta?'});
+    await db.insert('words', {
+      'english': 'Can I extend my stay?',
+      'turkish': 'Kalış süremi uzatabilir miyim?'
+    });
+    await db.insert('words', {
+      'english': 'Where is the ticket office?',
+      'turkish': 'Bilet gişesi nerede?'
+    });
+    await db.insert('words', {
+      'english': 'Can you help me with my luggage?',
+      'turkish': 'Bavuluma yardım edebilir misiniz?'
+    });
+    await db.insert('words', {
+      'english': 'I need to buy a ticket',
+      'turkish': 'Bir bilet almam gerekiyor'
+    });
+    await db.insert('words', {
+      'english': 'Where can I get a SIM card?',
+      'turkish': 'SIM kartı nereden alabilirim?'
+    });
+    await db.insert('words', {
+      'english': 'Can you recommend a good bakery?',
+      'turkish': 'İyi bir fırın tavsiye edebilir misiniz?'
+    });
+    await db.insert('words', {
+      'english': 'I need to go to the supermarket',
+      'turkish': 'Süpermarkete gitmem gerekiyor'
+    });
+    await db.insert('words', {
+      'english': 'What time is breakfast served?',
+      'turkish': 'Kahvaltı saat kaçta servis ediliyor?'
+    });
+    await db.insert('words', {
+      'english': 'Can I get a bus ticket?',
+      'turkish': 'Otobüs bileti alabilir miyim?'
+    });
+    await db.insert('words', {
+      'english': 'What time is the next train?',
+      'turkish': 'Bir sonraki tren saat kaçta?'
+    });
+    await db.insert('words', {
+      'english': 'Can I use your computer?',
+      'turkish': 'Bilgisayarınızı kullanabilir miyim?'
+    });
+    await db.insert('words', {
+      'english': 'Where can I buy a phone card?',
+      'turkish': 'Telefon kartını nereden alabilirim?'
+    });
+    await db.insert('words', {
+      'english': 'Can you recommend a good bookstore?',
+      'turkish': 'İyi bir kitapçı tavsiye edebilir misiniz?'
+    });
+    await db.insert('words', {
+      'english': 'I need to go to the mall',
+      'turkish': 'AVM\'ye gitmem gerekiyor'
+    });
+    await db.insert('words', {
+      'english': 'Where is the nearest coffee shop?',
+      'turkish': 'En yakın kahve dükkanı nerede?'
+    });
+    await db.insert('words', {
+      'english': 'Can I have a menu?',
+      'turkish': 'Bir menü alabilir miyim?'
+    });
+    await db.insert('words',
+        {'english': 'What time is check-in?', 'turkish': 'Giriş saat kaçta?'});
+    await db.insert('words', {
+      'english': 'Can I use the internet?',
+      'turkish': 'İnterneti kullanabilir miyim?'
+    });
+    await db.insert('words', {
+      'english': 'Where can I find a laundromat?',
+      'turkish': 'Nerede çamaşırhane bulabilirim?'
+    });
+    await db.insert('words', {
+      'english': 'Can you recommend a good hair salon?',
+      'turkish': 'İyi bir kuaför tavsiye edebilir misiniz?'
+    });
+    await db.insert('words', {
+      'english': 'I need to find a taxi stand',
+      'turkish': 'Bir taksi durağı bulmam gerekiyor'
+    });
+    await db.insert('words', {
+      'english': 'Where can I buy a metro ticket?',
+      'turkish': 'Metro biletini nereden alabilirim?'
+    });
+    await db.insert('words', {
+      'english': 'Can you help me with directions?',
+      'turkish': 'Yol tarifinde yardımcı olabilir misiniz?'
+    });
+    await db.insert('words', {
+      'english': 'What time does the market close?',
+      'turkish': 'Pazar saat kaçta kapanıyor?'
+    });
+    await db.insert('words', {
+      'english': 'Can I use your printer?',
+      'turkish': 'Yazıcınızı kullanabilir miyim?'
+    });
+    await db.insert('words', {
+      'english': 'Where is the tourist information?',
+      'turkish': 'Turist bilgilendirme nerede?'
+    });
+    await db.insert('words', {
+      'english': 'Can you recommend a good park?',
+      'turkish': 'İyi bir park tavsiye edebilir misiniz?'
+    });
+    await db.insert('words', {
+      'english': 'I need a map of the subway',
+      'turkish': 'Metro haritasına ihtiyacım var'
+    });
+    await db.insert('words', {
+      'english': 'Can I have a timetable?',
+      'turkish': 'Bir zaman çizelgesi alabilir miyim?'
+    });
+    await db.insert('words', {
+      'english': 'What time does the museum open?',
+      'turkish': 'Müze saat kaçta açılıyor?'
+    });
+    await db.insert('words', {
+      'english': 'Can you call a mechanic?',
+      'turkish': 'Bir tamirci çağırabilir misiniz?'
+    });
   }
 
   static Future<Map<String, dynamic>?> getTranslation(String english) async {
